@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
     this.handleSearch = this.handleSearch.bind(this);
     this.state = {
-      genres: []
+      genres: [],
+      term: ""
     }
   }
 
@@ -34,7 +35,20 @@ class App extends Component {
     return artist.genres;
   }
 
+  clearState() {
+    this.setState({
+      term: "",
+      artist: "",
+      genres: []
+    })
+  }
+
   handleSearch = (term) => {
+    if (term === "") {
+      this.clearState();
+      return
+    }
+    this.setState({term: term});
     this.searchArtist(term)
     .then(response => {
       return response.text();
@@ -69,6 +83,9 @@ class App extends Component {
           </div>
         </div>
         <div className="container">
+          {this.state.term === "" &&
+            <p style={{color:"#AAA"}}>Enter an artist name above to see what genre their music belongs to (try <a>The XX</a>, <a>T-Pain</a> or <a>Elbow</a>)</p>
+          }
           <h1>{this.state.artist}</h1>
           <div>
             {genreItems}
