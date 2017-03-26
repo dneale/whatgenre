@@ -65,6 +65,7 @@ class App extends Component {
           <div className="container">
             <h2>What Genre is this band?</h2>
             <SearchField onSearchTermChange={handleSearch} />
+            <p>Made by <a href="http://www.futuredoug.com">Future Doug</a></p>
           </div>
         </div>
         <div className="container">
