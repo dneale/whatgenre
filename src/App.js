@@ -48,6 +48,7 @@ class App extends Component {
           artist: artist.name,
           genres: this.getGenres(artist)
         })
+        window.ga('send', 'event', 'searchterm', 'search', 'term', artist);
       }
     })
   }
