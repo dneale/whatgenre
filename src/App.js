@@ -69,7 +69,7 @@ class App extends Component {
   render() {
     const genreItems = this.state.genres.map((genre) => {
         const link = `https://en.wikipedia.org/wiki/${genre}`;
-        return <div><a href={link}>{genre}</a></div>
+        return <div className="genre"><a href={link}>{genre}</a></div>
       });
 
     const handleSearch = _.debounce((term) => { this.handleSearch(term) }, 300);
@@ -85,10 +85,13 @@ class App extends Component {
         </div>
         <div className="container">
           {this.state.term === "" &&
-            <p style={{color:"#AAA"}}>Enter an artist name above to see what genre their music belongs to (try <a>The XX</a>, <a>T-Pain</a> or <a>Nine Inch Nails</a>)</p>
+            <p style={{color:"#AAA"}}>Enter an artist name above to see what genre their music belongs to (try <a>The xx</a>, <a>T-Pain</a> or <a>Nine Inch Nails</a>)</p>
           }
           <h1>{this.state.artist}</h1>
           <div>
+            {this.state.artist && genreItems.length === 0 &&
+              <p style={{color:"#AAA"}}> Hmm, There are no genres for this artist ¯\_(ツ)_/¯</p>
+            }
             {genreItems}
           </div>
         </div>
