@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 class SearchField extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +13,7 @@ class SearchField extends Component {
     this.setState(
       {searchTerm: event.target.value}
     );
-    this.props.onSearchTermChange(this.state.searchTerm);
+    this.props.onSearchTermChange(event.target.value);
   }
 
   render() {
@@ -24,6 +23,7 @@ class SearchField extends Component {
           placeholder="Enter artist name"
           value={this.state.searchTerm}
           onChange={this.onInputChange}
+          autoFocus
         />
       </div>
     )
