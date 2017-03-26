@@ -68,7 +68,8 @@ class App extends Component {
 
   render() {
     const genreItems = this.state.genres.map((genre) => {
-        return <div>{genre}</div>
+        const link = `https://en.wikipedia.org/wiki/${genre}`;
+        return <div><a href={link}>{genre}</a></div>
       });
 
     const handleSearch = _.debounce((term) => { this.handleSearch(term) }, 300);
@@ -84,7 +85,7 @@ class App extends Component {
         </div>
         <div className="container">
           {this.state.term === "" &&
-            <p style={{color:"#AAA"}}>Enter an artist name above to see what genre their music belongs to (try <a>The XX</a>, <a>T-Pain</a> or <a>Elbow</a>)</p>
+            <p style={{color:"#AAA"}}>Enter an artist name above to see what genre their music belongs to (try <a>The XX</a>, <a>T-Pain</a> or <a>Nine Inch Nails</a>)</p>
           }
           <h1>{this.state.artist}</h1>
           <div>
