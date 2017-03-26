@@ -42,13 +42,12 @@ class App extends Component {
     .then(body => {
       const data = JSON.parse(body);
       const artist = this.getArtist(data)
-      console.log(artist);
       if (artist !== undefined) {
         this.setState({
           artist: artist.name,
           genres: this.getGenres(artist)
         })
-        window.ga('send', 'event', 'searchterm', 'search', 'term', artist);
+        window.ga('send', 'event', 'searchterm', 'search', artist, 1);
       }
     })
   }
